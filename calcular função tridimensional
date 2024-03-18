@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class prova {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in);
+		double[][]nave1 = new double[4][3];
+		double[][]nave2 = new double[4][3];
+		
+		for(int i=0; i<nave1.length; i++) {
+			System.out.printf("digite as coordenadas do %d° vertice da nave 1(separadas por espaço):",i+1);
+		for(int j=0; j<nave1[i].length; j++) {
+			nave1[i][j] = input.nextDouble();
+		}     
+			
+		}
+		for(int i=0; i<nave2.length;i++) {
+			System.out.printf("digite as coordenadas do %d° vertice da nave 2(separadas por espaço):",i+1);
+			for(int j=0; j< nave2[i].length; j++) {
+				nave2[i][j] = input.nextDouble();
+				}
+		}
+		
+		double menorDistancia = Double.MAX_VALUE;
+		
+		for(int i=0; i< nave1.length;i++) {
+			for(int j=0; j< nave2.length;j++) {
+				double distancia = distancia(nave1[i],nave2[j]);
+				if (distancia < menorDistancia) {
+					menorDistancia = distancia;
+				} 
+			}
+		}
+		
+		System.out.printf("A menor distancia entre as duas naves é: %.2f" , menorDistancia);
+		
+	}
+ 
+	public static double distancia(double[]p1, double[]p2) {
+		double dx = p1[0]-p2[0];
+		double dy = p1[1]-p2[1];
+		double dz = p1[2]-p2[2];
+		return Math.sqrt(dx * dx +dy * dy + dz * dz);
+	}
+	
+	}
